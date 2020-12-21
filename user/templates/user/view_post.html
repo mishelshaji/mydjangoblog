@@ -1,0 +1,17 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+<div class="container">
+    <article>
+        <h1 class="text-center">{{ data.title }}</h1>
+        <section id="post_body" class="mt-5">
+            
+            {% autoescape off %}
+                {{ data.body }}
+            {% endautoescape %}
+            
+        </section>
+    </article>
+</div>
+{% endblock content %}
+    

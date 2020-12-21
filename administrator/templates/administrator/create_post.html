@@ -1,0 +1,36 @@
+{% extends 'administrator/shared/base.html' %}
+
+{% block content %}
+{% include 'administrator/partials/simplemde_sdk.html' %}
+<h1 class="text-center">Blog Post</h1>
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
+    </form>
+</div>
+<script>
+    var body_textbox = document.getElementById("id_body");
+    body_textbox.removeAttribute('required');
+    var simplemde = new SimpleMDE({ element:  body_textbox});
+
+    var source = document.getElementById('id_title');
+    var target_url = document.getElementById('id_url')
+    source.addEventListener('keyup', slugify);
+    function slugify() {
+        var res = source.value
+            .toString()
+            .trim()
+            .toLowerCase()
+            .replace(/\s+/g, "-")
+            .replace(/[^\w\-]+/g, "")
+            .replace(/\-\-+/g, "-")
+            .replace(/^-+/, "")
+            .replace(/-+$/, "");
+
+            target_url.value = res;
+    }
+</script>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'book/base.html' %}
+{% load custom_filters %}
+
+{% block content %}
+    <h1 class="text-center">Book List</h1>
+
+    
+    {% if data %}
+    <table class="table border table-striped table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for b in data %}
+        <tr>
+            <td>{{ b.name }}</td>
+            <td>{{ b.author }}</td>
+            <td>{{ b.price|format_price }}</td>
+            <td>{{ b.category }}</td>
+            <td>
+                <a href="{% url 'book_upadate' id=b.id %}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+            
+    </table>
+    {% else %}
+        <div class="alert alert-danger">
+            <h3>No books found</h3>
+        </div>
+    {% endif %}
+        
+{% endblock content %}
+    

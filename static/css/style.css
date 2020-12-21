@@ -1,0 +1,17 @@
+#post_body{
+    text-align: justify;
+}
+
+#post_body p{
+    margin: 50px 0px;
+}
+
+#post_body img{
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px #adadad;
+}
+
+/* #post_body a::after{
+    content: '>';
+} */
